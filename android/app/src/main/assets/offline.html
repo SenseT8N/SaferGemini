@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Offline!</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Roboto for Material 3 typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* Custom Tailwind configuration to define Material-like colors */
+        /* This needs to be done before Tailwind processes classes */
+        /* For a more robust Material 3 color system, you'd define a full palette */
+        :root {
+            --md-sys-color-primary: #6750A4; /* Example Material 3 primary color */
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-surface-container-high: #E6E0E9; /* Light surface color */
+            --md-sys-color-error: #B3261E;
+        }
+        .bg-md-primary { background-color: var(--md-sys-color-primary); }
+        .text-md-on-primary { color: var(--md-sys-color-on-primary); }
+        .bg-md-surface-container-high { background-color: var(--md-sys-color-surface-container-high); }
+        .text-md-error { color: var(--md-sys-color-error); }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'md-primary': 'var(--md-sys-color-primary)',
+                        'md-on-primary': 'var(--md-sys-color-on-primary)',
+                        'md-surface-container-high': 'var(--md-sys-color-surface-container-high)',
+                        'md-error': 'var(--md-sys-color-error)',
+                    },
+                    borderRadius: {
+                        'xl': '1.75rem', /* More pronounced rounded corners for Material 3 card */
+                        'lg': '2rem', /* Standard for buttons */
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-200 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-md-surface-container-high p-8 rounded-xl shadow-2xl text-center max-w-sm w-full">
+        <!-- Offline icon using Material Icons -->
+        <span class="material-icons text-md-error text-8xl mb-6">
+            cloud_off
+        </span>
+
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            You're Offline!
+        </h1>
+        <p class="text-lg text-gray-700 mb-8">
+            It looks like you're not connected to the internet. Please check your connection and try again.
+        </p>
+        <button
+            onclick="window.location.reload()"
+            class="bg-md-primary text-md-on-primary font-medium py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-md-primary focus:ring-opacity-50"
+        >
+            Try Again
+        </button>
+    </div>
+</body>
+</html>
